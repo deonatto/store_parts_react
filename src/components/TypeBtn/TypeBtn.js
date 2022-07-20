@@ -1,8 +1,19 @@
-import React from 'react'
+import React from 'react';
+import './TypeBtn.css';
 
-const TypeBtn = () => {
+const TypeBtn = ({types, typeHandler}) => {
+
+  const handleChange=(event)=>{
+    typeHandler(event.target.value);
+  }
+  
   return (
-    <div>TypeBtn</div>
+      <select onChange={handleChange} >
+        <option value="none" selected disabled hidden>Type</option>
+        {types && types.map((type,index)=>(
+          <option value={type} key={index}>{type}</option>
+        ))}
+      </select>
   )
 }
 

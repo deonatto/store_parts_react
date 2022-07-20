@@ -1,0 +1,16 @@
+.search-container{
+    width: 100px;
+    position: relative;
+}
+.search-icon{
+    font-size: 15px;
+    position: absolute;
+    bottom: 10px;
+    left: calc(100px - 22px);
+}
+.search-input{
+    outline: none;
+    padding: 5px;
+    width: 100%;
+    font-size: 16px;
+}

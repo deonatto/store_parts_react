@@ -1,0 +1,9 @@
+.title{
+    margin: 0px 0px 25px 0px;
+    font-size: 45px;
+}
+.btns-container{
+    width: 100%;
+    background-color: #F4F5F4;
+    display: flex;
+}
