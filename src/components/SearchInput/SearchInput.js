@@ -1,7 +1,7 @@
 import React from 'react';
-import './SearchBtn.css';
+import './SearchInput.css';
 
-const SearchBtn = () => {
+const SearchInput = () => {
   return (
     <div className='search-container'>
       <i className="fa-solid fa-magnifying-glass search-icon"/>
@@ -10,4 +10,4 @@ const SearchBtn = () => {
   )
 }
 
-export default SearchBtn;
+export default SearchInput;
