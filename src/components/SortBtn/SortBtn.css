@@ -1,0 +1,9 @@
+.sort-btn-container{
+    width: 100px;
+    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: 1px solid black;
+}

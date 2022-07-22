@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import './SortBtn.css';
 
 const SortBtn = () => {
   return (
-    <div>SortBtn</div>
+    <div className='sort-btn-container'>
+      <p>Sort</p>
+    </div>
   )
 }
 
