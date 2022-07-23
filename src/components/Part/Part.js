@@ -5,8 +5,8 @@ const Part = ({name, price, type}) => {
   return (
     <div className="element-container">
         <p>{name}</p>
-        <p>{price}</p>
         <p>{type}</p>
+        <p>{price}</p>
     </div>);
 };
 

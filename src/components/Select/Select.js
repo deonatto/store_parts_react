@@ -3,7 +3,6 @@ import './Select.css';
 
 const Select = ({data, changeHandler, defaultLabel}) => {
 
-  
   return (
       <select onChange={(event) => changeHandler(event.target.value)} defaultValue={defaultLabel}>
         <option value={defaultLabel}>{defaultLabel}</option>

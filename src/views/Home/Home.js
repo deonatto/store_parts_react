@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import "./Home.css";
 import Wrapper from "../../components/Wrapper/Wrapper";
 import SearchInput from "../../components/SearchInput/SearchInput";
@@ -6,32 +6,16 @@ import SortBtn from "../../components/SortBtn/SortBtn";
 import Select from "../../components/Select/Select";
 import List from "../../components/List/List";
 import useParts from "../../hooks/useParts";
+import useTypes from "../../hooks/useTypes";
 
 const Home = () => {
-  const [types, setTypes] = useState(null);
   const [type, setType] = useState("");
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState(null);
-
+  //custom hook for fetching parts
   const [parts, loading] = useParts(query, type);
-
-  useEffect(() => {
-    //get all types
-    const getTypes = async () => {
-      try {
-        const res = await fetch("http://localhost:8081/store/part-types", {
-          method: "GET",
-        });
-        if (res.ok) {
-          const data = await res.json();
-          setTypes(data);
-        }
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getTypes();
-  }, []);
+  //custom hook for fetching types
+  const [types] = useTypes();
 
   //set type selected by user
   const typeHandler = (typeSelected) => {
@@ -63,9 +47,22 @@ const Home = () => {
     }
   };
   
-  const sortParts = (parts) => {
-    return parts;
-  };
+  const sortParts=(partsArray)=>{
+    if(partsArray){
+      const sortedArray = [...partsArray];
+      switch (sort) {
+        case "asc":
+          sortedArray.sort((a, b)=> Number(a.price.replace("$","")) - Number(b.price.replace("$","")));
+          break;
+        case "desc":
+          sortedArray.sort((a, b)=> Number(b.price.replace("$","")) - Number(a.price.replace("$","")));
+          break;
+        default:
+          break;
+      }
+      return sortedArray;
+    }
+  }
 
   return (
     <Wrapper>
@@ -75,7 +72,7 @@ const Home = () => {
         <Select data={types} changeHandler={typeHandler} defaultLabel="Type" />
         <SortBtn data={sort} changeHandler={sortHandler} />
       </div>
-      <List data={sortParts(parts)} />
+      <List data={sortParts(parts)} loading={loading}/>
     </Wrapper>
   );
 };

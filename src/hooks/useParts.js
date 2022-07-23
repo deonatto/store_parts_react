@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-export default function useParts(query, type){
+export default function useParts(query, type) {
   const [parts, setParts] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -19,7 +19,6 @@ export default function useParts(query, type){
       return `http://localhost:8081/store/parts${queryString}`;
     };
     const url = getUrl();
-    console.log(url);
     //get all types
     const getParts = async () => {
       try {
@@ -28,7 +27,6 @@ export default function useParts(query, type){
         });
         if (res.ok) {
           const data = await res.json();
-          console.log(data);
           setParts(data);
           setLoading(false);
         }

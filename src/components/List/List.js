@@ -1,19 +1,23 @@
 import React from "react";
 import "./List.css";
 import Part from "../Part/Part";
+import Spinner from "../Spinner/Spinner";
 
-const List = ({ data }) => {
+const List = ({ data, loading }) => {
   return (
     <div className="list-container">
-      {data &&
-        data.map((element, index) => (
+      {loading ? (
+        <Spinner />
+      ) : (
+        data && data.map((element, index) => (
           <Part
             key={index}
             name={element.name}
-            price={element.price}
             type={element.type}
+            price={element.price}
           />
-        ))}
+        ))
+      )}
     </div>
   );
 };
