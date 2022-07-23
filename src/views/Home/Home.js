@@ -9,7 +9,7 @@ import useParts from "../../hooks/useParts";
 import useTypes from "../../hooks/useTypes";
 
 const Home = () => {
-  const [type, setType] = useState("");
+  const [type, setType] = useState(null);
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState(null);
   //custom hook for fetching parts
@@ -20,7 +20,7 @@ const Home = () => {
   //set type selected by user
   const typeHandler = (typeSelected) => {
     if (typeSelected === "Type") {
-      setType("");
+      setType(null);
     } else {
       setType(typeSelected);
     }
@@ -48,7 +48,7 @@ const Home = () => {
   };
   
   const sortParts=(partsArray)=>{
-    if(partsArray){
+    if(partsArray.length > 0){
       const sortedArray = [...partsArray];
       switch (sort) {
         case "asc":
@@ -61,6 +61,8 @@ const Home = () => {
           break;
       }
       return sortedArray;
+    }else{
+      return partsArray;
     }
   }
 

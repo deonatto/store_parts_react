@@ -1,0 +1,30 @@
+.part-view-title-container{
+    position: relative;
+    height: 55px;
+    margin-bottom: 50px;
+}
+.part-view-link{
+    font-size: 20px;
+    position: absolute;
+    bottom: 12.5px;
+}
+.part-view-link i {
+    font-size: 30px;
+    color: black;
+}
+.part-view-container{
+    height: 150px;
+}
+.part-view-titles-container{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 2px solid black;
+    margin-bottom: 20px;
+}
+.part-view-params-container{
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+}

@@ -6,9 +6,9 @@ const SortBtn = ({ data, changeHandler }) => {
     <div className="sort-btn-container" onClick={() => changeHandler()}>
       <p>Sort</p>
       {data === "desc" ? (
-        <i className="fa-solid fa-arrow-down" />
+        <i className="fa-solid fa-arrow-down sort-icon" />
       ) : data === "asc" ? (
-        <i className="fa-solid fa-arrow-up" />
+        <i className="fa-solid fa-arrow-up sort-icon" />
       ) : null}
     </div>
   );

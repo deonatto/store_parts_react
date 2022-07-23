@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export default function useParts(query, type) {
-  const [parts, setParts] = useState(null);
+  const [parts, setParts] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -27,6 +27,7 @@ export default function useParts(query, type) {
         });
         if (res.ok) {
           const data = await res.json();
+          console.log(data);
           setParts(data);
           setLoading(false);
         }
