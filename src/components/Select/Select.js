@@ -1,10 +1,10 @@
 import React from "react";
 import "./Select.css";
 
-const Select = ({ data, changeHandler, defaultLabel }) => {
+const Select = ({ data, typeHandler, defaultLabel }) => {
   return (
     <select
-      onChange={(event) => changeHandler(event.target.value)}
+      onChange={(event) => typeHandler(event.target.value)}
       defaultValue={defaultLabel}
     >
       <option value={defaultLabel}>{defaultLabel}</option>

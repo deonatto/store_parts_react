@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import "./SearchInput.css";
 
-const SearchInput = ({ changeHandler }) => {
+const SearchInput = ({ queryHandler }) => {
   const [searchValue, setSearchValue] = useState("");
 
   return (
     <div className="search-container">
       <i
         className="fa-solid fa-magnifying-glass search-icon"
-        onClick={() => changeHandler(searchValue)}
+        onClick={() => queryHandler(searchValue)}
       />
       <input
         className="search-input"
@@ -17,7 +17,7 @@ const SearchInput = ({ changeHandler }) => {
         value={searchValue}
         onChange={(event) => setSearchValue(event.target.value)}
         onKeyDown={(event) =>
-          event.key === "Enter" && changeHandler(searchValue)
+          event.key === "Enter" && queryHandler(searchValue)
         }
       />
     </div>

@@ -3,7 +3,7 @@ import "./List.css";
 import PartItem from "../PartItem/PartItem";
 import Spinner from "../Spinner/Spinner";
 
-const List = ({ data, loading }) => {
+const List = ({ data, loading, message}) => {
   return (
     <div className="list-container">
       <div className="list-titles-container">
@@ -23,7 +23,7 @@ const List = ({ data, loading }) => {
           />
         ))
       ) : (
-        <h3 className="list-message">No parts found</h3>
+        <h3 className="list-message">{message}</h3>
       )}
     </div>
   );

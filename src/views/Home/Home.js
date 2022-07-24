@@ -13,7 +13,7 @@ const Home = () => {
   const [query, setQuery] = useState(null);
   const [sort, setSort] = useState(null);
   //custom hook for fetching parts
-  const [parts, loading] = useParts(query, type);
+  const [parts, message, loading] = useParts(query, type);
   //custom hook for fetching types
   const [types] = useTypes();
 
@@ -81,11 +81,11 @@ const Home = () => {
     <Wrapper>
       <h1 className="title">Store Parts</h1>
       <div className="filters-container">
-        <SearchInput changeHandler={queryHandler} />
-        <Select data={types} changeHandler={typeHandler} defaultLabel="Type" />
-        <SortBtn data={sort} changeHandler={sortHandler} />
+        <SearchInput queryHandler={queryHandler} />
+        <Select data={types} typeHandler={typeHandler} defaultLabel="Type" />
+        <SortBtn data={sort} sortHandler={sortHandler} />
       </div>
-      <List data={sortParts(parts)} loading={loading} />
+      <List data={sortParts(parts)} loading={loading} message={message}/>
     </Wrapper>
   );
 };

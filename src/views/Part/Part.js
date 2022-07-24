@@ -8,7 +8,7 @@ import Spinner from "../../components/Spinner/Spinner";
 const Part = () => {
   const { name } = useParams();
   //custom hook for fetching part
-  const [part, loading] = usePart(name);
+  const [part, message, loading] = usePart(name);
 
   return (
     <Wrapper>
@@ -35,7 +35,7 @@ const Part = () => {
             </div>
           ))
         ) : (
-          <h3>No part found</h3>
+          <h3>{message}</h3>
         )}
       </div>
     </Wrapper>
