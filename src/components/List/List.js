@@ -1,6 +1,6 @@
 import React from "react";
 import "./List.css";
-import Part from "../Part/Part";
+import PartItem from "../PartItem/PartItem";
 import Spinner from "../Spinner/Spinner";
 
 const List = ({ data, loading }) => {
@@ -13,15 +13,17 @@ const List = ({ data, loading }) => {
       </div>
       {loading ? (
         <Spinner />
-      ) : (
-        data.length > 0 ? data.map((element, index) => (
-          <Part
+      ) : data.length > 0 ? (
+        data.map((element, index) => (
+          <PartItem
             key={index}
             name={element.name}
             type={element.type}
             price={element.price}
           />
-        )) : <h3 className="list-message">No match found</h3>
+        ))
+      ) : (
+        <h3 className="list-message">No parts found</h3>
       )}
     </div>
   );

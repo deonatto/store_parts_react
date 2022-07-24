@@ -5,8 +5,10 @@ export default function useParts(query, type) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    //set loading value to true to show spinner
     setLoading(true);
 
+    //set Url to be fetched
     const getUrl = () => {
       let queryString = "";
       if (query && type) {
@@ -18,7 +20,10 @@ export default function useParts(query, type) {
       }
       return `http://localhost:8081/store/parts${queryString}`;
     };
+
+    //get url
     const url = getUrl();
+
     //get all types
     const getParts = async () => {
       try {
@@ -27,7 +32,6 @@ export default function useParts(query, type) {
         });
         if (res.ok) {
           const data = await res.json();
-          console.log(data);
           setParts(data);
           setLoading(false);
         }

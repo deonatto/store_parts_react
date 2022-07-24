@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import "./Home.css";
 import Wrapper from "../../components/Wrapper/Wrapper";
 import SearchInput from "../../components/SearchInput/SearchInput";
@@ -10,7 +10,7 @@ import useTypes from "../../hooks/useTypes";
 
 const Home = () => {
   const [type, setType] = useState(null);
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(null);
   const [sort, setSort] = useState(null);
   //custom hook for fetching parts
   const [parts, loading] = useParts(query, type);
@@ -31,6 +31,8 @@ const Home = () => {
     setQuery(queryInserted.toLowerCase());
   };
 
+  // change sort order when user clicks sort button
+  // Initially, list has no sort order
   const sortHandler = () => {
     switch (sort) {
       case null:
@@ -46,25 +48,34 @@ const Home = () => {
         break;
     }
   };
-  
-  const sortParts=(partsArray)=>{
-    if(partsArray.length > 0){
+
+  //sort array by given order
+  const sortParts = (partsArray) => {
+    if (partsArray.length > 0) {
       const sortedArray = [...partsArray];
       switch (sort) {
         case "asc":
-          sortedArray.sort((a, b)=> Number(a.price.replace("$","")) - Number(b.price.replace("$","")));
+          sortedArray.sort(
+            (a, b) =>
+              Number(a.price.replace("$", "")) -
+              Number(b.price.replace("$", ""))
+          );
           break;
         case "desc":
-          sortedArray.sort((a, b)=> Number(b.price.replace("$","")) - Number(a.price.replace("$","")));
+          sortedArray.sort(
+            (a, b) =>
+              Number(b.price.replace("$", "")) -
+              Number(a.price.replace("$", ""))
+          );
           break;
         default:
           break;
       }
       return sortedArray;
-    }else{
+    } else {
       return partsArray;
     }
-  }
+  };
 
   return (
     <Wrapper>
@@ -74,7 +85,7 @@ const Home = () => {
         <Select data={types} changeHandler={typeHandler} defaultLabel="Type" />
         <SortBtn data={sort} changeHandler={sortHandler} />
       </div>
-      <List data={sortParts(parts)} loading={loading}/>
+      <List data={sortParts(parts)} loading={loading} />
     </Wrapper>
   );
 };

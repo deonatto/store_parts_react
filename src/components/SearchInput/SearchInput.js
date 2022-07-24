@@ -3,7 +3,7 @@ import "./SearchInput.css";
 
 const SearchInput = ({ changeHandler }) => {
   const [searchValue, setSearchValue] = useState("");
-  
+
   return (
     <div className="search-container">
       <i
